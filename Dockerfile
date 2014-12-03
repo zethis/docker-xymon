@@ -20,6 +20,12 @@ RUN tar -C /etc/xymon -czf /root/xymon-config.tgz .; tar -C /var/lib/xymon -czf 
 
 RUN a2enmod cgi
 
+# Generally useful, particularly for keeping configuration under source control
+RUN apt-get install -y git
+
+# if you want to generate and use keys, e.g. for GIT pulls
+RUN apt-get install -y openssh-client
+
 ADD start /root/start
 
 ADD placeholder.html /var/lib/xymon/www/index.html
