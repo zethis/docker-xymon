@@ -11,3 +11,5 @@ steps:
       from_secret: dockerhub_password
     repo: zethis/docker-xymon
     tags: latest
+    when:
+      event: tags
