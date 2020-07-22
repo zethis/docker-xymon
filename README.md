@@ -1,3 +1,7 @@
+For of https://github.com/deweysasser/docker-xymon
+==================================================
+[![Build Status](https://drone.zethis.ovh/api/badges/zethis/docker-xymon/status.svg)](https://drone.zethis.ovh/zethis/docker-xymon)
+
 docker-xymon
 ============
 
@@ -6,13 +10,13 @@ Dockerization of the Xymon monitoring system on an Ubuntu base
 Quick Start
 ===========
 
-    docker run -d -p 80:80 -p 1984:1984 -v /etc/xymon:/etc/xymon -v /var/lib/xymon:/var/lib/xymon --name xymon deweysasser/xymon
+    docker run -d -p 80:80 -p 1984:1984 -v /etc/xymon:/etc/xymon -v /var/lib/xymon:/var/lib/xymon --name xymon zethis/docker-xymon
 
 or use docker-compose with
 
 ```
 xymon:
-  image: deweysasser/xymon
+  image: zethis/docker-xymon
   ports:
     - 80:80
     - 1984:1984
@@ -38,9 +42,8 @@ Ports
 
 You only need to expose port 1984 if you are going to use a xymon
 client
-(e.g. [native](http://packages.ubuntu.com/trusty/net/xymon-client),
-[Windows](http://bbwin.sourceforge.net/) or
-[docker](https://hub.docker.com/r/deweysasser/xymon-client/)).
+(e.g. [native](https://packages.debian.org/fr/stretch/xymon-client),
+[Windows](http://bbwin.sourceforge.net/).
 
 Port 1984 should *NOT* be exposed to public (Internet facing) traffic.
 
@@ -84,16 +87,17 @@ Timezone
 
 By default the container will use the `posixrules` TZ rule set. If
 you'd like to override this, set the environment variable 'TZ',
-e.g. `docker run -d -e TZ=America/New_York`
+e.g. `docker run -d -e TZ=Europe/Paris`
 
 
 Known Issues
 ============
 
 * Password protection on cgi directories is currently disabled
+* Better to use Traefik in front of this
 
 Maintainer
 ==========
 
 Please submit all issues/suggestions/bugs via
-https://github.com/deweysasser/docker-xymon
+https://github.com/zethis/docker-xymon
