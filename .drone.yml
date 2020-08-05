@@ -15,3 +15,22 @@ trigger:
   event:
   - cron
   - tag
+- name: gotify
+  image: fredix/drone-gotify:latest
+  settings:
+    gotifytoken:
+      from_secret: gotifytoken
+    gotifyendpoint:
+      from_secret: gotifyendpoint
+    gotifytitle:
+      from_secret: gotifytitle
+    gotifypriority:
+      from_secret: gotifypriority
+    message: >
+      {{#success build.status}}
+        build {{build.number}} succeeded on {{repo.name}}. Good job {{build.author}}  {{build.link}}
+      {{else}}
+        build {{build.number}} failed on {{repo.name}}. Fix me please {{build.author}}  {{build.link}}
+      {{/success}}
+  when:
+    status: [ success, failure ]
