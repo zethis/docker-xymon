@@ -15,6 +15,7 @@ trigger:
   event:
   - cron
   - tag
+
 - name: gotify
   image: fredix/drone-gotify:latest
   settings:
