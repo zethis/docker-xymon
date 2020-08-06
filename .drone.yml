@@ -11,10 +11,10 @@ steps:
       from_secret: dockerhub_password
     repo: zethis/docker-xymon
     tags: latest
-trigger:
-  event:
-  - cron
-  - tag
+  when:
+    event:
+    - cron
+    - tag
 
 - name: gotify
   image: fredix/drone-gotify:latest
